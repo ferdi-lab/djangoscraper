@@ -2,32 +2,113 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Resultados</title>
+    <title>Resultados del scraping</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+        }
+
+        .pdf-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .pdf-card h2 {
+            color: #2980b9;
+        }
+
+        h3 {
+            color: #27ae60;
+            margin-top: 1rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .completar-btn {
+            margin-top: 1rem;
+            background-color: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .completar-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .completado {
+            background-color: #2ecc71 !important;
+        }
+
+        .mensaje {
+            color: #2ecc71;
+            margin-top: 0.5rem;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+    <script>
+        function marcarCompletado(boton) {
+            boton.classList.add('completado');
+            boton.textContent = "¡Completado!";
+            const mensaje = boton.nextElementSibling;
+            mensaje.style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <h1>Resultados del scraping</h1>
 
     {% for resultado in resultados %}
-        <h2>PDF: {{ resultado.url }}</h2>
+    <div class="pdf-card">
+        <h2>PDF: <a href="{{ resultado.url }}" target="_blank">{{ resultado.url }}</a></h2>
+        
         <h3>Frases con "oposiciones":</h3>
         <ul>
             {% for frase in resultado.oposiciones %}
                 <li>{{ frase }}</li>
             {% endfor %}
         </ul>
+
         <h3>Frases con "plaza":</h3>
         <ul>
             {% for frase in resultado.plaza %}
                 <li>{{ frase }}</li>
             {% endfor %}
         </ul>
+
         <h3>Frases con "convocatoria":</h3>
         <ul>
             {% for frase in resultado.convocatoria %}
                 <li>{{ frase }}</li>
             {% endfor %}
         </ul>
-        <hr>
+
+        <button class="completar-btn" onclick="marcarCompletado(this)">Marcar como completado</button>
+        <div class="mensaje">¡Este PDF ha sido marcado como completado!</div>
+    </div>
     {% endfor %}
 </body>
 </html>
