@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados</title>
+</head>
+<body>
+    <h1>Resultados del scraping</h1>
+
+    {% for resultado in resultados %}
+        <h2>PDF: {{ resultado.url }}</h2>
+        <h3>Frases con "oposiciones":</h3>
+        <ul>
+            {% for frase in resultado.oposiciones %}
+                <li>{{ frase }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Frases con "plaza":</h3>
+        <ul>
+            {% for frase in resultado.plaza %}
+                <li>{{ frase }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Frases con "convocatoria":</h3>
+        <ul>
+            {% for frase in resultado.convocatoria %}
+                <li>{{ frase }}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+    {% endfor %}
+</body>
+</html>
