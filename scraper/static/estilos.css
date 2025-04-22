@@ -1,0 +1,65 @@
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 2rem;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+    color: red;
+    margin-bottom: 3rem;
+}
+
+.pdf-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.pdf-card h2 {
+    color: #2980b9;
+}
+
+h3 {
+    color: #27ae60;
+    margin-top: 1rem;
+}
+
+ul {
+    padding-left: 1.2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.completar-btn {
+    margin-top: 1rem;
+    background-color: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.completar-btn:hover {
+    background-color: #2980b9;
+}
+
+.completado {
+    background-color: #2ecc71 !important;
+}
+
+.mensaje {
+    color: #2ecc71;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    display: none;
+}
